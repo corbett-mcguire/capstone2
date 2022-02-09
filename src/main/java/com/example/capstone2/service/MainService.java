@@ -1,6 +1,7 @@
 package com.example.capstone2.service;
 
 import com.example.capstone2.controller.MainController;
+import com.example.capstone2.model.Post;
 import com.example.capstone2.model.Type;
 import com.example.capstone2.repository.PostRepository;
 import com.example.capstone2.repository.TypeRepository;
@@ -30,4 +31,7 @@ public class MainService {
         return typeRepository.findAll();
     }
 
+    public List<Post> getTypePosts(Long typeId) {
+        return postRepository.getByTypeId(typeId);
+    }
 }

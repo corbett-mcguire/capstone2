@@ -1,13 +1,11 @@
 package com.example.capstone2.controller;
 
 
+import com.example.capstone2.model.Post;
 import com.example.capstone2.model.Type;
 import com.example.capstone2.service.MainService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.logging.Logger;
@@ -29,5 +27,12 @@ public class MainController {
     public List<Type> getTypes() {
         System.out.println("calling getTypes method from controller");
         return mainService.getTypes();
+    }
+
+    // http://localhost:9092/api/types/1/posts
+    @GetMapping("/types/{typeId}/posts")
+    public List<Post> getTypePosts(@PathVariable(value = "typeId") Long typeId) {
+        System.out.println("Calling getTypePosts method from controller");
+        return mainService.getTypePosts(typeId);
     }
 }
