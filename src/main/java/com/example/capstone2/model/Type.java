@@ -12,6 +12,10 @@ public class Type {
     @Column
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column
+    private String name;
+    
     @OneToMany(mappedBy = "type")
     private List <Post> posts;
 
