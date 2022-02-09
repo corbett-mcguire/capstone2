@@ -15,7 +15,7 @@ public class Type {
 
     @Column
     private String name;
-    
+
     @OneToMany(mappedBy = "type")
     private List <Post> posts;
 
