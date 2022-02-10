@@ -35,4 +35,9 @@ public class MainController {
         System.out.println("Calling getTypePosts method from controller");
         return mainService.getTypePosts(typeId);
     }
+
+    @PostMapping("/types/{typeId}/posts")
+    public Post createTypePost(@PathVariable Long typeId, @RequestBody Post postObject){
+        return mainService.createTypePost(typeId, postObject);
+    }
 }

@@ -1,5 +1,7 @@
 package com.example.capstone2.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 @Entity
@@ -22,6 +24,7 @@ public class Post {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "type_id")
+    @JsonIgnore
     private Type type;
 
     public Post() {

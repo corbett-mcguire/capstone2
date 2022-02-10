@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.logging.Logger;
 
 @Service
@@ -33,5 +34,14 @@ public class MainService {
 
     public List<Post> getTypePosts(Long typeId) {
         return postRepository.getByTypeId(typeId);
+    }
+
+    public Post createTypePost(Long typeId, Post postObject) {
+        Optional<Type> type = typeRepository.findById(typeId);
+        if (type.isPresent()){
+            postObject.setType(type.get());
+            return postRepository.save(postObject);
+        }
+        return postObject;
     }
 }
