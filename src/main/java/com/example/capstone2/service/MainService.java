@@ -44,4 +44,26 @@ public class MainService {
         }
         return postObject;
     }
+
+
+    public Type getOneType(Long typeId) {
+        Optional<Type> type = typeRepository.findById(typeId);
+        if (type.isPresent()){
+         return type.get();
+        }
+        return null;
+    }
+
+    public Post deleteTypePost(Long typeId, Long postId) {
+        Optional<Type> type = typeRepository.findById(typeId);
+        if (type.isPresent()){
+            Optional<Post> post= postRepository.getByIdAndTypeId(postId, typeId);
+            if (post.isPresent()){
+                postRepository.deleteById(postId);
+                return post.get();
+            }
+            return null;
+        }
+        return null;
+    }
 }

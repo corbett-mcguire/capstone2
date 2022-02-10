@@ -28,6 +28,10 @@ public class MainController {
         System.out.println("calling getTypes method from controller");
         return mainService.getTypes();
     }
+    @GetMapping("/types/{typeId}")
+    public Type getOneType(@PathVariable Long typeId){
+        return mainService.getOneType(typeId);
+    }
 
     // http://localhost:9092/api/types/1/posts
     @GetMapping("/types/{typeId}/posts")
@@ -39,5 +43,9 @@ public class MainController {
     @PostMapping("/types/{typeId}/posts")
     public Post createTypePost(@PathVariable Long typeId, @RequestBody Post postObject){
         return mainService.createTypePost(typeId, postObject);
+    }
+    @DeleteMapping("/types/{typeId}/posts/{postId}")
+    public Post deleteTypePost(@PathVariable Long postId, @PathVariable Long typeId){
+        return mainService.deleteTypePost(typeId, postId);
     }
 }

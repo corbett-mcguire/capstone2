@@ -13,11 +13,12 @@ public class Type {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+
     @Column
     private String name;
 
     @OneToMany(mappedBy = "type")
-    private List <Post> posts;
+    private List<Post> posts;
 
     public Type() {
     }
@@ -36,5 +37,13 @@ public class Type {
 
     public void setPosts(List<Post> posts) {
         this.posts = posts;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }

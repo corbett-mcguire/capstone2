@@ -16,13 +16,13 @@ public class Post {
     @Column
     private String name;
 
-    @Column
+    @Column(unique = true)
     private String title;
 
     @Column
     private String description;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne()
     @JoinColumn(name = "type_id")
     @JsonIgnore
     private Type type;
