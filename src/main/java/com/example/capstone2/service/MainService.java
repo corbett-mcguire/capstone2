@@ -66,4 +66,19 @@ public class MainService {
         }
         return null;
     }
+
+    public Post editTypePost(Long typeId, Long postId, Post postObject) {
+        Optional<Type> type = typeRepository.findById(typeId);
+        if (type.isPresent()){
+            Optional<Post> post= postRepository.getByIdAndTypeId(postId, typeId);
+            if (post.isPresent()){
+                post.get().setName(postObject.getName());
+                post.get().setTitle(postObject.getTitle());
+                post.get().setDescription(postObject.getDescription());
+                return postRepository.save(post.get());
+            }
+            return null;
+        }
+        return null;
+    }
 }

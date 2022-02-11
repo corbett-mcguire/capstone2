@@ -30,6 +30,12 @@ public class Post {
     public Post() {
     }
 
+    public Post(String name, String title, String description) {
+        this.name = name;
+        this.title = title;
+        this.description = description;
+    }
+
     public Long getId() {
         return id;
     }

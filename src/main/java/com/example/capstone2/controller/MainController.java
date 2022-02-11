@@ -48,4 +48,8 @@ public class MainController {
     public Post deleteTypePost(@PathVariable Long postId, @PathVariable Long typeId){
         return mainService.deleteTypePost(typeId, postId);
     }
+    @PutMapping("/types/{typeId}/posts/{postId}")
+    public Post editTypePost(@PathVariable Long typeId, @PathVariable Long postId, @RequestBody Post postObject){
+        return mainService.editTypePost(typeId, postId, postObject);
+    }
 }
